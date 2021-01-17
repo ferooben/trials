@@ -1,15 +1,14 @@
 
-<?php 
-session_start(); 
-include "KullaniciKontrol.php";
-
- ?>
+ <?php 
+ include 'KullaniciKontrol.php';
+  ?>
 <html>
 <head>
 	
 </head>
 
 <body>
-	<h1><?php $_SESSION["username"] ?> giriş yaptı.</h1>
+	<h1>giriş başarılı</h1>
+	<a href="Logout.php">Çıkış</a>
 </body>
 </html>

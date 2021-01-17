@@ -1,14 +1,8 @@
 <?php 
+	session_start();
 
-	try {
-			
-		 
-
-	} catch (Exception $e) {
-		echo "birşeyler ters gitti";
- 
+	if(!isset($_SESSION["username"])){
+		header('location:index.php');
 	}
-
-
 
  ?>
