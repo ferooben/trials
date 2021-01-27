@@ -28,7 +28,7 @@ require 'PHPMailer/src/SMTP.php';
 	 	//Alıcı Ayarları
 
  		$mail->setFrom('phpmailericin.deneme@gmail.com', $_POST['adSoyad']);	//Gönderen adres, gönderilen isim
- 		$mail->addAddress($_POST["To"], 'PHPMailer Maili');	//Alıcı adresi - gösterilecek isim
+ 		$mail->addAddress(trim(strtolower($_POST["To"])), 'PHPMailer Maili');	//Alıcı adresi - gösterilecek isim
  		// $mail->addReplyTo('info@example.com', 'Information');	
  		// $mail->addCC('cc@example.com');
  		// $mail->addBCC('bcc@example.com');
