@@ -1,0 +1,1 @@
+Phpmailer deneme text dosyası için oluşturulmuş bir dosyadır.

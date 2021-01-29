@@ -3,25 +3,25 @@
 
  
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\Exception; 
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php'; 
+require 'phpmailer/phpmailer/src/Exception.php';
+require 'phpmailer/phpmailer/src/PHPMailer.php';
+require 'phpmailer/phpmailer/src/SMTP.php';  
+
  
  $mail = new PHPMailer();	//nesne olusturuyoruz
 
  try {
 
- 		//Server Ayarları
-
+ 		//Server Ayarları   
  		// $mail->SMTPDebug = SMTP::DEBUG_SERVER;	//Hata ayıklama 
  		$mail->isSMTP();	//Smtp protokolünü kullanıyoruz 
  		$mail->Host = 'smtp.gmail.com';	//Gmail servis adresi
 		$mail->SMTPAuth = true;	//Doğrulama
- 		$mail->Username ='phpmialericin.deneme@gmail.com';	//Giriş için mail adresi 
+ 		$mail->Username ='phpmailericin.deneme@gmail.com';	//Giriş için mail adresi 
  		$mail->Password ='Phpmailer_123';	//Mail adresimizin şifresi
-	 	$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  //SSL - TLS Şifreleme etkinleştirme - PHPMailer::ENCRYPTION_SMTPS
+	 	$mail->SMTPSecure = 'tls';  //SSL - TLS Şifreleme etkinleştirme - PHPMailer::ENCRYPTION_SMTPS - PHPMailer::ENCRYPTION_STARTTLS
 	 	$mail->Port = 587; 	//TCP bağlantı girişi - Defualt:25 - PHPMailer::ENCRYPTION_SMTPS için port 465
  		
 
@@ -44,9 +44,14 @@ require 'PHPMailer/src/SMTP.php';
  		$mail->isHTML(true);	//Html içerik
  		$mail->Subject= $_POST['Subject'];		// Mail konusu
  		$mail->Body = $_POST['Mesaj'];		//Mesaj içeriği
- 		$mail->send(); 		//Maili gönderiyoruz
+ 		
+ 		if (!$mail->send()) {
+		    echo 'Hata Mesajı: ' . $mail->ErrorInfo;
+		} else {
+		    echo 'Mesaj iletildi!';
+		}
 
- 		echo 'Mesajınız '.$_POST['To'].' adresine gönderilmiştir.';
+ 
  } catch (Exception $e) {
  	echo 'Mesaj gönderilemedi. Alınan hata:'.$mail->ErrorInfo;
  }

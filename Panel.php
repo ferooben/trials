@@ -307,7 +307,7 @@
 
                 </div>
 
-                    
+                    <span class="label label-warning float-left"><h4>Mesajınız gönderilmiştir...</h4></span>
                     
                     <div class="clearfix"></div>
 
